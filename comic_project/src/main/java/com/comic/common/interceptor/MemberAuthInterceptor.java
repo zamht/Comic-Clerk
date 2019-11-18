@@ -1,7 +1,5 @@
 ﻿package com.comic.common.interceptor;
 
-import java.util.Enumeration;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -40,7 +38,8 @@ public class MemberAuthInterceptor extends HandlerInterceptorAdapter {
             request.getSession().setAttribute("destination", uri);
         }
     }
-
+//    Controller 타기 전에 실행
+//    servlet-context.xml 에서 지정한 경로에 갈 시에 작동
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession httpSession = request.getSession();
@@ -49,7 +48,6 @@ public class MemberAuthInterceptor extends HandlerInterceptorAdapter {
             response.sendRedirect("/member/MemberLogin");
             return false;
         }
-
         return true;
     }
 }

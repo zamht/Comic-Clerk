@@ -53,7 +53,7 @@ public class Uploadcontroller {
 			String uploadFileName = multipartFile.getOriginalFilename();
 
 			// IE has file path
-			uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("/") + 1);
+			uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
 			
 			vo.setFileName(uploadFileName);
 

@@ -14,30 +14,30 @@
 <title>Comic Clerk</title>
 
 <link rel="stylesheet"
-   href="../resources/vendors/mdi/css/materialdesignicons.min.css">
+   href="/resources/vendors/mdi/css/materialdesignicons.min.css">
 <link rel="stylesheet"
-   href="../resources/vendors/base/vendor.bundle.base.css">
+   href="/resources/vendors/base/vendor.bundle.base.css">
 <link rel="stylesheet"
-   href="../resources/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+   href="/resources/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
 <link rel="stylesheet" href="/resources/css/style.css">
 <link rel="shortcut icon" href="/resources/images/favicon.png" />
 
 <!-- <script src="//code.jquery.com/jquery-3.2.1.min.js"></script> -->
-<script src="../resources/vendors/base/vendor.bundle.base.js"></script>
-<script src="../resources/vendors/chart.js/Chart.min.js"></script>
-<script src="../resources/vendors/datatables.net/jquery.dataTables.js"></script>
-<script src="../resources/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-<script src="../resources/js/off-canvas.js"></script>
-<script src="../resources/js/hoverable-collapse.js"></script>
-<script src="../resources/js/template.js"></script>
-<script src="../resources/js/dashboard.js"></script>
-<script src="../resources/js/data-table.js"></script>
-<script src="../resources/js/jquery.dataTables.js"></script>
-<script src="../resources/js/dataTables.bootstrap4.js"></script>
-<script src="../resources/js/header.js?ver=1"></script>
+<script src="/resources/vendors/base/vendor.bundle.base.js"></script>
+<script src="/resources/vendors/chart.js/Chart.min.js"></script>
+<script src="/resources/vendors/datatables.net/jquery.dataTables.js"></script>
+<script src="/resources/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+<script src="/resources/js/off-canvas.js"></script>
+<script src="/resources/js/hoverable-collapse.js"></script>
+<script src="/resources/js/template.js"></script>
+<script src="/resources/js/dashboard.js"></script>
+<script src="/resources/js/data-table.js"></script>
+<script src="/resources/js/jquery.dataTables.js"></script>
+<script src="/resources/js/dataTables.bootstrap4.js"></script>
+<script src="/resources/js/header.js?ver=1"></script>
 
 <script src="https://cdn.jsdelivr.net/sockjs/1/sockjs.min.js"></script>
-<script src="../resources/js/orderWebsocket.js?ver=3"></script>
+<script src="/resources/js/orderWebsocket.js?ver=1"></script>
 
 
 </body>

@@ -2,6 +2,8 @@ var cmntajax = (function() {
 
 	function add(comments, callback, error) {
 		console.log(JSON.stringify(comments))
+		comments.cmnt_content = comments.cmnt_content.replace(/(?:\r\n|\r|\n)/g, '<br>');
+    	console.log(comments);
 		
 		$.ajax({
 			type : 'POST',
@@ -32,7 +34,11 @@ var cmntajax = (function() {
 	    $.getJSON("/Cmnts/" +BOARD_NUM+ ".json", function(data) {
 	    	            //이거 실행후      //이거 실행시킨다.
 	    	// 
-			console.log(data+"여기는 겟 데이터 ")
+			console.log(data+"여기는 겟 데이터 ");
+			for (var i = 0, len = data.length || 0; i < len; i++) {
+			data[i].cmnt_content = data[i].cmnt_content.toString().split('&lt;br>').join("\r\n");
+			}
+
 	          if (callback) {
 	            callback(data); // 댓글 목록만 가져오는 경우 
 	          }
