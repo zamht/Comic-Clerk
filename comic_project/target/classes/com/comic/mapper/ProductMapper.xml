@@ -10,7 +10,7 @@
 	
 	<select id="productCategory" resultType="com.comic.model.ProductVO">
 		<!-- SELECT DISTINCT(product_category) FROM COMIC_PRODUCTSTOCK -->
-		select product_category from comic_productstock where product_category not in(SELECT DISTINCT(a.product_category) FROM COMIC_PRODUCTSTOCK a, COMIC_ORDERVIEW b where a.product_category = b.orderview_category)
+		select DISTINCT(product_category) from comic_productstock where product_category not in(SELECT a.product_category FROM COMIC_PRODUCTSTOCK a, COMIC_ORDERVIEW b where a.product_category = b.orderview_category)
 	</select>
 	
 	<select id="productRead" resultType="com.comic.model.ProductVO">
