@@ -314,60 +314,42 @@ body {
 						searching : true, // 검색 기능
 						bStateSave : true,
 						"iDisplayLength" : 10,
-						"columnDefs" : [ {
-							targets : 'no-sort',
-							orderable : false
-						} ],
+						"columnDefs" : [ { targets : 'no-sort', orderable : false } ],
 						ajax : {
 							url : "/realorder/realOrderData.json",
 							type : "get",
 							dataSrc : '',
 						},
-						"language": {
-						      search: "Search :"
-						},
+						"language": { search: "Search :" },
 						aoColumns : [
-								{
-									data : "order_num"
-								},
-								{ data: "order_time", 
-						    		"render": function (data) {
-						    			var date = new Date(data); var month = date.getMonth() + 1; 
-						    			return  date.getFullYear() + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds(); } 
-							    },
-								{
-									data : "order_roomnum"
-								},
-								{
-									data : "order_id"
-								},
-								{
-									data : "product_name"
-								},
-								{
-									data : "order_qty"
-								},
-								{
-									data : "product_price"
-								},],
+								{ data : "order_num"},
+								{ data: "order_time", "render": function (data) { var date = new Date(data); var month = date.getMonth() + 1;
+						    			return  date.getFullYear() + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds(); } },
+								{ data : "order_roomnum" },
+								{ data : "order_id" },
+								{ data : "product_name" },
+								{ data : "order_qty" },
+								{ data : "product_price" },],
 						order : [ [ 0, 'desc' ] ]
 					});
 			}
 			
 		$("button[name='chat']").on("click", function() {
-			chatRoom = $(this).attr('value');
-			$("#chat" + chatRoom).css('color', 'white');
-			console.log("chatRoom" + chatRoom);
-			//window.open("/chat/chatting?room=" + roomNum,"_blank","height=550px, width=800px, left=300px, top=120px, location=no, scrollbars=no, menubar=no, status=no, resizable=no");
-			$('#chatModal').css('display','');
-			$("#chatModal").show();
-			$(".title").html("");
-			$(".title").append(chatRoom + "방 채팅");
-			$('#modalstyle').css('display','');
-			for(var i=1; i < 7; i++) {
-				$("#messages" + i).hide();
-			}  
-			$("#messages" + chatRoom).show();
+	         chatRoom = $(this).attr('value');
+	         clearInterval(setIntervalChatStop);
+	         $("#chat" + chatRoom).css('background-color', '');
+	         $("#chat" + chatRoom).css('border-color', '');
+	         console.log("chatRoom" + chatRoom);
+	         //window.open("/chat/chatting?room=" + roomNum,"_blank","height=550px, width=800px, left=300px, top=120px, location=no, scrollbars=no, menubar=no, status=no, resizable=no");
+	         $('#chatModal').css('display','');
+	         $("#chatModal").show();
+	         $(".title").html("");
+	         $(".title").append(chatRoom + "방 채팅");
+	         $('#modalstyle').css('display','');
+	         for(var i=1; i < 7; i++) {
+	            $("#messages" + i).hide();
+	         }  
+	         $("#messages" + chatRoom).show();
 			
 			$.ajax({
 				type: 'get',
@@ -413,32 +395,34 @@ body {
 	} 
 	var orderArlet;
 	function adminproductBillModalBtn(num) {
-		orderArlet = num;
-		$("#orderDetail" + num).css('color', 'white');
-		console.log("일로옴?");
-		var id = document.getElementById('user' + num).innerHTML;
-		console.log(id);
-		$('#modalstyle').css('display','');
-		$.ajax({
-			type: 'get',
-			url: '/userView/userProductBill?userId='+id,
-			dataType: 'json',
-			success: function(data) {
-				console.log(data);
-				$("#productBillTbody").html("");
-	            var str = '<tr>';
-	            $.each(data , function(i){
-	            	var date = new Date(data[i].order_time); var month = date.getMonth() + 1; 
-	                str += '<td>' + date.getFullYear() + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getDate() +
-	                "<br>" + date.getHours() + " : " + date.getMinutes() + ' : ' + date.getSeconds() + '</td><td>' + data[i].product_name + '</td><td>' + data[i].order_qty + '</td><td>' + data[i].order_bill + '</td>';
-	                str += '</tr>';
-	           });
-	           $("#productBillTbody").append(str);
-				
-			}
-		});
-		$("#adminproductBillModal").show();
-	}
-	</script>
+	      clearInterval(setIntervalOrderStop);
+	      orderArlet = num;
+	      $("#orderDetail" + num).css("background-color","");
+	      $("#orderDetail" + num).css("border-color","");
+	      console.log("일로옴?");
+	      var id = document.getElementById('user' + num).innerHTML;
+	      console.log(id);
+	      $('#modalstyle').css('display','');
+	      $.ajax({
+	         type: 'get',
+	         url: '/userView/userProductBill?userId='+id,
+	         dataType: 'json',
+	         success: function(data) {
+	            console.log(data);
+	            $("#productBillTbody").html("");
+	               var str = '<tr>';
+	               $.each(data , function(i){
+	                  var date = new Date(data[i].order_time); var month = date.getMonth() + 1; 
+	                   str += '<td>' + date.getFullYear() + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getDate() +
+	                   "<br>" + date.getHours() + " : " + date.getMinutes() + ' : ' + date.getSeconds() + '</td><td>' + data[i].product_name + '</td><td>' + data[i].order_qty + '</td><td>' + data[i].order_bill + '</td>';
+	                   str += '</tr>';
+	              });
+	              $('#modalstyle').css('display','');            
+	              $("#productBillTbody").append(str);
+	         }
+	      });
+	      $("#adminproductBillModal").show();
+	   }
+	   </script>
 </body>
 </html>

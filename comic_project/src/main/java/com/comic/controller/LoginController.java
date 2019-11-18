@@ -1,9 +1,13 @@
 package com.comic.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpStatus;
@@ -19,7 +23,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.util.WebUtils;
 
+import com.comic.model.EmployeeVO;
 import com.comic.model.LoginVO;
 import com.comic.model.MemberVO;
 import com.comic.service.MemberService;
@@ -32,7 +38,6 @@ import lombok.AllArgsConstructor;
 public class LoginController {
 	
 	private MemberService service;
-	//비밀번호 암호화
 	private BCryptPasswordEncoder passEncoder;
 	
 	//멤버 회원가입 페이지 이동
@@ -97,16 +102,15 @@ public class LoginController {
 	}
 	
 	//관리자 멤버 정보 수정
-	@PostMapping("/AdminMemberModify")
-	public String AdminMemberModify(MemberVO vo) {
-		service.AdminMemberModify(vo);
+	@PostMapping("/MemberModify")
+	public String MemberModify(MemberVO vo) {
+		service.MemberModify(vo);
 		return "redirect:/member/MemberList";
 	}
 	
-	//회원이 정보 수정
-	@PostMapping("/MemberModify")
-	public String MemberModify(MemberVO vo) throws Exception {
-		service.MemberModify(vo);
+	@PostMapping("/MemberModify2")
+	public String MemberModify2(MemberVO vo) throws Exception {
+		service.MemberModify2(vo);
 		return "redirect:/userView/main";
 	}
 	

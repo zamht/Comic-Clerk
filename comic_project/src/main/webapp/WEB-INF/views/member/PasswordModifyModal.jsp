@@ -38,22 +38,12 @@
 							<input name="MEMBER_EMAIL" id="MEMBER_EMAIL" type="email" class="form-control" maxlength="50">
 						</div>
 						<div class="form-group">
-							<label>
-								<font style="vertical-align: inherit;">핸드폰번호</font>
+							<label for="exampleInputPassword1">
+								<font style="vertical-align: inherit;">핸드폰 번호</font>
 							</label>
-			              	<div>
-			                <input type="text" class="form-control" id="MEMBER_PHONE_NUMBER1"
-			                		name="MEMBER_PHONE_NUMBER1" style="display:inline;float:left; width: 30%" maxlength="3">
-			                <h3 style="display:inline;float:left; width: 5%; height: 3.5rem; margin: 15px 0px; text-align: center;">-</h3>
-			                <input type="text" class="form-control" id="MEMBER_PHONE_NUMBER2" 
-			                		name="MEMBER_PHONE_NUMBER2" style="display:inline;float:left; width: 30%" maxlength="4">
-			                <h3 style="display:inline;float:left; width: 5%; height: 3.5rem; margin: 15px 0px; text-align: center;">-</h3>
-			                <input type="text" class="form-control" id="MEMBER_PHONE_NUMBER3" 
-			                		name="MEMBER_PHONE_NUMBER3" style="display:inline;float:left; width: 30%" maxlength="4">
-			                </div>
-			                <input type="hidden" name="MEMBER_PHONE_NUMBER" id="MEMBER_PHONE_NUMBER4" value="">
+							<input name="MEMBER_PHONE_NUMBER" id="MEMBER_PHONE_NUMBER" type="tel" class="form-control">
 						</div>
-						<div class="form-group" align="center" style="float: right; width:430px;">
+						<div class="form-group" align="center">
 							<button type="button" id="pmodify" name="pmodify" style="color:white;"
 									class="btn btn-warning" onclick="pwdmodify();">확인</button>
 							<button type="button" id="passwordmodifyclose" class="btn btn-primary">닫기</button>

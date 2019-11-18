@@ -80,5 +80,5 @@ if (msg === "REGISTERED") {
 }
 
 </script>
-<script src="/resources/js/memberlogin.js?ver=11"></script>
+<script src="/resources/js/memberlogin.js?ver=7"></script>
 </html>

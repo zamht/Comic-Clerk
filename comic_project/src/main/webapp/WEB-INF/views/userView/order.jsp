@@ -59,6 +59,13 @@ td {
    <!-- Header -->
    <div class="main-penal">
       <div class="content-wrapper">
+         <div style="background-color: #37363a; height: 150px;">
+            <img src="/resources/images/comic_image.png" alt=""
+               style="width: 200px; height: 100px; margin-left: 600px; margin-top: 20px; float: left" />
+            <div class="content-section-heading text-center" style="width: 500px; height: 100px; margin-top: 30px; float: left; ">
+               <br/><h1 style="color: white;">${ roomNum }번방</h1>
+            </div><br/><br/>
+         </div>
          
          <div style="margin:10px 150px 0 0; width:200x; text-align: center;">
          <h2 class=".h2"><a href="javascript:home()">홈</a> > 상품주문</h2>

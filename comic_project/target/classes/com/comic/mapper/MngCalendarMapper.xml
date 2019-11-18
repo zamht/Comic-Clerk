@@ -10,8 +10,8 @@
 		select TO_CHAR( workinghour_workday,'yyyymmdd')"workday"
 	,TO_CHAR(workinghour_starttime, 'hh24:mi:ss')"starttime"
 	,TO_CHAR(workinghour_ENDtime, 'hh24:mi:ss')"endtime"
-	from comic_workinghour where workinghour_workday <![CDATA[ > ]]> #{startday}
-	and workinghour_workday <![CDATA[ < ]]> #{endday} and workinghour_emp_num=#{empnum}
+	from comic_workinghour where TO_CHAR( workinghour_workday,'yyyymmdd') <![CDATA[ > ]]> #{startday}
+	and TO_CHAR( workinghour_workday,'yyyymmdd') <![CDATA[ < ]]> #{endday} and workinghour_emp_num=#{empnum}
 	</select>
 	
 	

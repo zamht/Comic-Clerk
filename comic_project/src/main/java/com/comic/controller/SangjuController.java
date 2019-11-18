@@ -38,7 +38,6 @@ import net.coobird.thumbnailator.Thumbnails;
 @RequestMapping("/sangju/")
 @AllArgsConstructor
 public class SangjuController {
-
 	private UserOrderManegerService userOrderManegerService;
 
 	@GetMapping("/popup")
@@ -118,7 +117,7 @@ public class SangjuController {
 		OrderProductViewVO vo = new OrderProductViewVO();
 		MultipartFile uploadFile = request.getFile("uploadFile");
 
-		String uploadFolder = "C:\\upload";
+		String uploadFolder = "C:\\upload\\";
 		String uploadFolderPath = getFolder();
 		// make folder --------S
 		File uploadPath = new File(uploadFolder, uploadFolderPath);
@@ -128,7 +127,7 @@ public class SangjuController {
 		String uploadFileName = uploadFile.getOriginalFilename();
 
 		// IE has file path uploadFileName =
-		uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
+		uploadFileName.substring(uploadFileName.lastIndexOf("/") + 1);
 
 		UUID uuid = UUID.randomUUID();
 		vo.setOrderview_filename(uploadFileName);
@@ -209,7 +208,7 @@ public class SangjuController {
 		System.out.println(uploadFile);
 		System.out.println(uploadFile.getContentType());
 
-		String uploadFolder = "C:\\upload";
+		String uploadFolder = "C:\\upload\\";
 		String uploadFolderPath = getFolder();
 		// make folder --------S
 		File uploadPath = new File(uploadFolder, uploadFolderPath);
@@ -219,7 +218,7 @@ public class SangjuController {
 		String uploadFileName = uploadFile.getOriginalFilename();
 
 		// IE has file path uploadFileName =
-		uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
+		uploadFileName.substring(uploadFileName.lastIndexOf("/") + 1);
 
 		UUID uuid = UUID.randomUUID();
 		uploadFileName = uuid.toString() + "_" + uploadFileName;

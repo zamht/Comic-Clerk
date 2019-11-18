@@ -16,7 +16,7 @@
 							<h4 class="card-title">
 								<font style="vertical-align: inherit;">회원 정보</font>
 							</h4>
-							<form class="forms-sample" name="headermembermodify" method="post" autocomplete="off" action="/member/MemberModify" onsubmit="return headervalidate();">
+							<form class="forms-sample" name="headermembermodify" method="post" autocomplete="off" action="/member/MemberModify2" onsubmit="return javascript:headervalidate();">
 								<div class="form-group">
 									<label> <font style="vertical-align: inherit;">아이디</font>
 									</label> <input name="MEMBER_ID" id="HeaderMEMBER_ID" readonly="readonly"
@@ -40,20 +40,10 @@
 								<div class="form-group">
 									<label> <font style="vertical-align: inherit;">핸드폰
 											번호</font>
-									</label>
-									<div>
-						                <input type="text" class="form-control" id="HeaderMEMBER_PHONE_NUMBER1"
-						                		name="MEMBER_PHONE_NUMBER1" style="display:inline;float:left; width: 30%" maxlength="3">
-						                <h3 style="display:inline;float:left; width: 5%; height: 3.5rem; margin: 15px 0px; text-align: center;">-</h3>
-						                <input type="text" class="form-control" id="HeaderMEMBER_PHONE_NUMBER2" 
-						                		name="MEMBER_PHONE_NUMBER2" style="display:inline;float:left; width: 30%" maxlength="4">
-						                <h3 style="display:inline;float:left; width: 5%; height: 3.5rem; margin: 15px 0px; text-align: center;">-</h3>
-						                <input type="text" class="form-control" id="HeaderMEMBER_PHONE_NUMBER3" 
-						                		name="MEMBER_PHONE_NUMBER3" style="display:inline;float:left; width: 30%" maxlength="4">
-					                </div>
-					                <input type="hidden" name="MEMBER_PHONE_NUMBER" id="HeaderMEMBER_PHONE_NUMBER4" value="">
+									</label> <input name="MEMBER_PHONE_NUMBER" id="HeaderMEMBER_PHONE_NUMBER"
+										type="tel" class="form-control" value="${Memberlogin.MEMBER_PHONE_NUMBER}">
 								</div>
-								<div class="form-group" align="center"  style="float: right; width:430px;">
+								<div class="form-group" align="center">
 									<button type="submit" id="headermodifyBtn" name="headermodifyBtn" class="btn btn-info">수정</button>
 									<button type="button" id="headermodifyclose" class="btn btn-success">닫기</button>
 								</div>

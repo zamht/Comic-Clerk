@@ -508,13 +508,13 @@ public class AdministratorController {
 			
 			attachList.forEach(attach -> {
 				try {
-					Path file = Paths.get("C:\\upload\\comic_employee\\" + attach.getUploadPath() + "\\" + attach.getUuid() + "_" + attach.getFileName());
+					Path file = Paths.get("C:\\upload\\comic_employee\\" + attach.getUploadPath() + "/" + attach.getUuid() + "_" + attach.getFileName());
 					
 					Files.deleteIfExists(file);
 					
 					if(Files.probeContentType(file).startsWith("image")) {
 						
-						Path thumbNail = Paths.get("C:\\upload\\comic_employee\\" + attach.getUploadPath() + "\\s_" + attach.getUuid() + "_" + attach.getFileName());
+						Path thumbNail = Paths.get("C:\\upload\\comic_employee\\" + attach.getUploadPath() + "/s_" + attach.getUuid() + "_" + attach.getFileName());
 						
 						Files.delete(thumbNail);
 					}

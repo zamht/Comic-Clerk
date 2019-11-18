@@ -14,7 +14,7 @@
 							<h4 class="card-title">
 								<font style="vertical-align: inherit;">회원 정보</font>
 							</h4>
-							<form onsubmit="return false;">
+							<form>
 							<div class="form-group">
 								<label> <font style="vertical-align: inherit;">비밀번호 확인</font></label>
 								<input type="password" name="MEMBER_PWD" id="headerMemberModifyPassword" class="form-control">
