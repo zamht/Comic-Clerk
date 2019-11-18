@@ -107,23 +107,22 @@
 	commentsList();
 	
 	function commentsList(){
-		
-		console.log("페이지번호: " + boardValue);
-		var str='';
+	      
+		  var str='';
 
-		cmntajax.getList(boardValue, function(data){	
-		for (var i = 0, len = data.length || 0; i < len; i++) {
-			 str += '<div style="margin-bottom: 10px; height:190px; background-color:#DAE8E8; border-radius: 20px; width:1150px;"><br/>';
-			 str += '<div style="margin-left:40px; float:left; width:40px; height:40px; background-color:white; border-radius: 50%; font-weight:bold;"></br>&emsp;'+data[i].cmnt_num+'</div>';
-			 str += '<div style="height:20px; font-size:20px; margin-left:100px;">'+'작성자 : '+data[i].cmnt_id+' / 작성일 : '+cmntajax.displayTime(data[i].cmnt_date)+'</div>';
-  			 str +=	'<br/><br/><div style="word-break: break-all; background-color:white; border-radius:20px; height:110px; margin-left:40px; width:1000px;" id= "updateCmnt_'+ data[i].cmnt_num +'"><br/>'+data[i].cmnt_content+'</div>';
-	   		 str +=	'</div>';			
+	      cmntajax.getList(boardValue, function(data){   
+	      for (var i = 0, len = data.length || 0; i < len; i++) {
+	          str += '<div style="margin-bottom: 20px; height:190px; border-bottom:1px solid #cdcdce; width:1500px;"><br/>';
+	          str += '<div style="padding: 1px 15px; margin-left:40px; float:left; width:43px; height:40px; border:1px solid rgba(77, 131, 255, 0.5); border-radius: 50%;"></br>'+data[i].cmnt_num+'</div>';
+	          str += '<div style="height:20px; font-size:20px; margin-left:100px;">'+'작성자 : '+data[i].cmnt_id+' / 작성일 : '+cmntajax.displayTime(data[i].cmnt_date);
+	      	  str +=   '</div><br/><br/><div style="border:1px solid rgba(77, 131, 255, 0.5); border-radius: 20px; height:110px; width:1400px; margin-left:40px; padding:1px 10px;" id= "updateCmnt_'+ data[i].cmnt_num +'"><br/>'+data[i].cmnt_content+'</div>';
+	      	  str +=   '</div>';         
+	      }
+		     cmntList.html(str);
+	   
+		   });
 
-		}
-		cmntList.html(str);
-	 });
-
-	}
+	    }
 
 
 

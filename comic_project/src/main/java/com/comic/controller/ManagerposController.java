@@ -137,7 +137,7 @@ public class ManagerposController {
 
 			SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
 			String currenttime = format.format(System.currentTimeMillis());
-			
+
 			String starttimearr[] = starttime.split(":");
 			String curtimearr[] = currenttime.split(":");
 			int usetimearr[] = new int[3];
@@ -159,7 +159,7 @@ public class ManagerposController {
 			replydata.put("roomuse_num", list.get(i).getRoomuse_num());
 			replydata.put("starttime", list.get(i).getStarttime());
 			replydata.put("roomuse_status", list.get(i).getRoomuse_status());
-			replydata.put("currenttime", currenttime);
+
 			replydataArray.add(replydata);
 
 		}
@@ -495,13 +495,13 @@ public class ManagerposController {
 			
 			attachList.forEach(attach -> {
 				try {
-					Path file = Paths.get("C:\\upload\\comic_employee\\" + attach.getUploadPath() + "/" + attach.getUuid() + "_" + attach.getFileName());
+					Path file = Paths.get("C:\\upload\\comic_employee\\" + attach.getUploadPath() + "\\" + attach.getUuid() + "_" + attach.getFileName());
 					
 					Files.deleteIfExists(file);
 					
 					if(Files.probeContentType(file).startsWith("image")) {
 						
-						Path thumbNail = Paths.get("C:\\upload\\comic_employee\\" + attach.getUploadPath() + "/s_" + attach.getUuid() + "_" + attach.getFileName());
+						Path thumbNail = Paths.get("C:\\upload\\comic_employee\\" + attach.getUploadPath() + "\\s_" + attach.getUuid() + "_" + attach.getFileName());
 						
 						Files.delete(thumbNail);
 					}

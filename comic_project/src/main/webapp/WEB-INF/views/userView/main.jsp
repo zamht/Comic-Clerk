@@ -1,6 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../includes/userHeader.jsp"%>
-<script src="/resources/js/header.js"></script>
+<script src="/resources/js/header.js?ver=23"></script>
 
 <style type="text/css">
 .content-wrapper {
@@ -102,9 +102,6 @@ $(document).ready(function(){
 	ajaxtogetdb_comic_room_uselist();
 	var operForm = $("#operForm");
 
-
-	
-	
 	$("#userOrderView").on("click", function(e){
 		operForm.attr("method", "get");
 		operForm.attr("action","/userView/order");
@@ -290,10 +287,10 @@ $('#kakaopay').click(function(e){
 		              if(popup.closed){
 			              if( closeParam == 'success') {
 			            	socket.send(room_num + ",종료," + mem_id);
-			            	location.href="localhost:8080/userView/mainPro?roomNum="+room_num
+			            	location.href="http://localhost:8080/userView/mainPro?roomNum="+room_num
 			            	
 			              } else {
-		            	  	location.href="localhost:8080/userView/main?roomNum="+room_num
+		            	  	location.href="http://localhost:8080/userView/main?roomNum="+room_num
 					      }
 		                 
 		              }

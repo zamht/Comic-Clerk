@@ -2,94 +2,46 @@ var socket = new WebSocket("ws://localhost:8080/echo_order");
 socket.onopen = function() {
 	console.log("소켓 시작");
 };
-var roomValue;
-var setIntervalChatStop;
-var setIntervalOrderStop;
-var setIntervalStopChatCss;
-var checkChat = false;
-var checkOrder = false;
-
-function orderArlet(roomNum, userid) {
-	   alert(roomNum + " 방"  + userid + "님 주문!");
-	   $("#orderDetail" + roomNum).css("background-color","RGB(255,71,71)");
-	   $("#orderDetail" + roomNum).css("border-color","RGB(255,71,71)");
-	   if (checkOrder == true) {
-		   clearInterval(setIntervalOrderStop);
-	   }
-	   setIntervalOrderStop = setInterval("flashOrder("+roomNum+")", 500);
-}
 
 socket.onmessage = function(event) {
 	console.log(event.data);
 	var data = event.data.split('|');
-	  if(data[0] == "chat") {
-		  roomValue = data[1];
-	      test = data[1];
-	      message_side = 'left';
-	      console.log(data); 
-	      sendMessage(data[2]);
-	      console.log("##########################채팅");
-	      $("#chat" + test).css("background-color","rgb(255, 71, 71)");
-	      $("#chat" + test).css("border-color","rgb(255, 71, 71)");
-	      $('#chatCss').css('display','');
-	      if (checkChat == true) {
-	    	  clearInterval(setIntervalChatStop);
-	      }
-	      setIntervalChatStop = setInterval("flashChat("+test+")", 500);
-	   } else {
-	      if(data[1] == "주문") {
-	         console.log("test");
-	         orderArlet(data[0], data[2]);
-	         realOrderRenew();
-	      } else if(data[1] == "시작") {
-	         ajaxtosenddb_comic_room_use2(data[2], data[0], "on");
-	      } else if(data[1] == "종료") {
-	         console.log(sessionValue);
-	         chatDataDelete(data[0]);
-	         ajaxtosenddb_comic_room_use2(data[2], data[0], "off");
-	         alert(data[0] + "방 사용 종료!!");
-	         location.href="/managerpos/managerpos";
-	      } else if(data[1] == "주문가져가") {
-	         alert('주문이 준비되었습니다 카운터로 오셔서 가져가주세요!');
-	      }
-	   }
-	};
-
-	function flashChat(test){
-	   if ($("#chat" + test).css("background-color") == "rgb(255, 71, 71)") {
-	      $("#chat" + test).css("background-color","rgb(113,192,22)");
-	      $("#chat" + test).css("border-color","rgb(113,192,22)");
-	   }
-	   else{ 
-	      $("#chat" + test).css("background-color","RGB(255, 71, 71)");
-	      $("#chat" + test).css("border-color","rgb(255, 71, 71)");
-	   }
-	   
-	   checkChat = true;
+	if(data[0] == "chat") {
+		test = data[1];
+		message_side = 'left';
+		console.log(data); 
+		sendMessage(data[2]);
+		$("#chatCss").css('color', 'red');
+		$("#chat" + test).css('color', 'red');
+	} else {
+		if(data[1] == "주문") {
+			console.log("test");
+			orderArlet(data[0], data[2]);
+			realOrderRenew();
+		} else if(data[1] == "시작") {
+			ajaxtosenddb_comic_room_use2(data[2], data[0], "on");
+		} else if(data[1] == "종료") {
+			console.log(sessionValue);
+			chatDataDelete(data[0]);
+			ajaxtosenddb_comic_room_use2(data[2], data[0], "off");
+			alert(data[0] + "방 사용 종료!!");
+			location.href="/managerpos/managerpos";
+		} else if(data[1] == "주문가져가") {
+			alert('주문이 준비되었습니다 카운터로 오셔서 가져가주세요!');
+		}
 	}
-
+	 
+	
+};
 
 socket.onclose = function() {
 	console.log("소켓 끝");
 };
 
-	
-	
-	function flashOrder(roomNum){
-	   
-	   console.log($("#orderDetail" + roomNum).css("background-color"));
-	   if ($("#orderDetail" + roomNum).css("background-color") == "rgb(255, 71, 71)") {
-	      $("#orderDetail" + roomNum).css("background-color","RGB(77,131,255)");
-	      $("#orderDetail" + roomNum).css("border-color","RGB(77,131,255)");
-	   }
-	   else{ 
-	      $("#orderDetail" + roomNum).css("background-color","RGB(255,71,71)");
-	      $("#orderDetail" + roomNum).css("border-color","RGB(255,71,71)");
-	   }
-	   
-	   checkOrder = true;
-	   
-	}
+function orderArlet(roomNum, userid) {
+	alert(roomNum + " 방"  + userid + "님 주문!");
+	$("#orderDetail" + roomNum).css('color', 'red');
+}
 
 function userOrderArlet() {
 	$("#orderArlet").modal("show");
@@ -173,11 +125,8 @@ Message = function(arg) {
 	this.draw = function(_this) {
 		return function() {
 			var $message;
-			if(roomValue == undefined){
-				test = chatRoom;
-			} else {
-				test = roomValue;
-			}
+			console.log(chatRoom);
+			test = chatRoom;
 			console.log(test);
 			$message = $($('.message_template' + test).clone().html());
 			$message.addClass(_this.message_side).find('.text').html(

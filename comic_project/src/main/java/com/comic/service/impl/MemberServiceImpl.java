@@ -1,7 +1,6 @@
 package com.comic.service.impl;
 
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import com.comic.model.EmployeeAttachVO;
 import com.comic.model.EmployeeVO;
 import com.comic.model.LoginVO;
 import com.comic.model.MemberVO;
-import com.comic.model.RoomuseVO;
 import com.comic.service.MemberService;
 
 @Service
@@ -53,8 +51,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public void MemberModify(MemberVO vo) {
-		mapper.MemberUpdate(vo);
+	public void AdminMemberModify(MemberVO vo) {
+		mapper.AdminMemberUpdate(vo);
 	}
 	
 	@Override
@@ -78,30 +76,20 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public void MemberModify2(MemberVO vo) throws Exception {
+	public void MemberModify(MemberVO vo) throws Exception {
 		password = vo.getMEMBER_PWD();
 		vo.setMEMBER_PWD(passwordEncoder.encode(password));
-		mapper.MemberUpdate2(vo);
+		mapper.MemberUpdate(vo);
 	}
 	
 	@Override
 	public String membermodifypasswordcheck(String mEMBER_ID) {
 		return mapper.membermodifypasswordcheck(mEMBER_ID);
 	}
-
-	@Override
-	public void EmployeekeepLogin(int EMPLOYEE_NUM, String sessionId, Date sessionLimit) throws Exception {
-		mapper.EmployeekeepLogin(EMPLOYEE_NUM, sessionId, sessionLimit);
-	}
 	
 	@Override
 	public EmployeeVO employeeLogin(LoginVO loginVO) throws Exception {
 		return mapper.employeeLogin(loginVO);
-	}
-	
-	@Override
-	public MemberVO checkLoginBefore(String value) throws Exception {
-		return mapper.checkUserWithSessionKey(value);
 	}
 
 	@Override
